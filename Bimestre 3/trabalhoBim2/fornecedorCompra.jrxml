@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="fornecedorCompra" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9f199be8-453b-494f-b7ea-225bc52af8ec">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<queryString language="SQL">
+		<![CDATA[select f.cdfornecedor as codFornecedor,
+c.cdcompra as codCompra, 
+f.nmfornecedor as nome,
+c.dtcompra as data,
+c.valorcompra as valor,
+c.formapgcompra as formapg
+from tbcompra c, tbfornecedor f
+where c.cdfornecedor = f.cdfornecedor
+order by f.cdfornecedor]]>
+	</queryString>
+	<field name="codFornecedor" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="codFornecedor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbfornecedor"/>
+	</field>
+	<field name="codCompra" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="codCompra"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbcompra"/>
+	</field>
+	<field name="nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbfornecedor"/>
+	</field>
+	<field name="data" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="data"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbcompra"/>
+	</field>
+	<field name="valor" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="valor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbcompra"/>
+	</field>
+	<field name="formapg" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="formapg"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbcompra"/>
+	</field>
+	<group name="codFornecedor">
+		<groupExpression><![CDATA[$F{codFornecedor}]]></groupExpression>
+		<groupHeader>
+			<band height="41">
+				<textField>
+					<reportElement x="280" y="9" width="275" height="30" uuid="2578ec0e-d2bc-4ccf-9471-cdc711ae0208"/>
+					<textFieldExpression><![CDATA["Nome: " + $F{nome}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="0" y="9" width="280" height="30" uuid="c8887716-0489-4755-8f6f-add16df14213"/>
+					<textFieldExpression><![CDATA["Código: " + $F{codFornecedor}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement x="-20" y="14" width="595" height="33" uuid="6137f3cf-8cce-4aeb-984d-e9abe5d3480c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Algerian" size="20"/>
+				</textElement>
+				<text><![CDATA[Relatório de compras por fornecedor]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="470" y="10" width="85" height="30" uuid="1014fc28-5dc0-461f-a24a-d50e8ad144af"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="17" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="3" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="29" splitType="Stretch">
+			<textField>
+				<reportElement x="430" y="-1" width="125" height="30" uuid="4dcda89d-1891-429e-b7b8-56362fe6dcd3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="736b7d3f-d9af-48b9-8c6a-30c89c35aaaf"/>
+				</reportElement>
+				<box topPadding="3" leftPadding="5" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="-1" width="130" height="30" uuid="b26cd4fd-3c8d-40e3-a394-5e39eb1567f7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f17a8ab6-e1de-499e-a172-2e1bf9352b3e"/>
+				</reportElement>
+				<box topPadding="3" leftPadding="5" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codCompra}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="-1" width="150" height="30" uuid="01cd2055-ce4e-425e-a201-c977879fe74e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9e879da6-8e92-4792-951a-ed215a8b1519"/>
+				</reportElement>
+				<box topPadding="3" leftPadding="5" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{formapg}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="-1" width="150" height="30" uuid="824341e0-b0dd-4da3-abfd-13109d51a2f9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="736b7d3f-d9af-48b9-8c6a-30c89c35aaaf"/>
+				</reportElement>
+				<box topPadding="3" leftPadding="5" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

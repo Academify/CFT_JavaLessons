@@ -1,0 +1,3 @@
+CREATE TABLE TbAluno (
+ Nome VARCHAR(10)
+);
